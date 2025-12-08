@@ -44,6 +44,8 @@ local lsp = require "lsp-zero".preset({
     suggest_lsp_servers = true,
 })
 
+local conform = require("conform")
+
 local cmp = require('cmp')
 local cmp_select = { behavior = cmp.SelectBehavior.Select }
 local cmp_mappings = lsp.defaults.cmp_mappings({
@@ -93,7 +95,7 @@ lsp.on_attach(function(client, bufnr)
     -- end
 
 
-    vim.keymap.set("n", "<leader>f", vim.lsp.buf.format)
+    vim.keymap.set("n", "<leader>f", conform.format)
     vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
     vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
     vim.keymap.set("n", "<leader>vws", vim.lsp.buf.workspace_symbol, opts)
